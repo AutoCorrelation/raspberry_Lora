@@ -4,7 +4,7 @@ import time
 # 시리얼 포트 설정 (ttyS0 또는 ttyAMA1 사용)
 ser = serial.Serial(
     port='/dev/ttyS0',  # 또는 '/dev/ttyAMA1' 사용
-    baudrate=115200,  # 모듈과 일치하는 baud rate 사용
+    baudrate=57600,  # 모듈과 일치하는 baud rate 사용
     timeout=1
 )
 
@@ -21,7 +21,7 @@ def send_at_command(command):
     response = ser.read(ser.inWaiting()).decode()  # 응답 읽기
     return response
 def read_data():
-    time.sleep(0.5)
+    time.sleep(0.1)
     response = ser.read().decode()  # 응답 읽기
     return response
 
