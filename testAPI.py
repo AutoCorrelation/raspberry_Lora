@@ -46,10 +46,10 @@ if __name__ == "__main__":
     api = API("https://www.kgu-shiphub.com/api/sensor")
 
     # 데이터 준비
-    section = 2  # enum (1 byte)
-    speed = 100  # integer (4 bytes)
-    temperature = +20  # integer (4 bytes, 음수 포함)
-    is_fire = False  # boolean (1 byte)
+    section = 2             # enum (1 byte)
+    speed = 100             # integer (4 bytes)
+    temperature = +20       # integer (4 bytes, 음수 포함)
+    is_fire = False         # boolean (1 byte)
 
     # 데이터를 16진수 문자열로 변환
     hex_section = f"{section:02x}"
