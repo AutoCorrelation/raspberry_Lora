@@ -23,12 +23,12 @@ class API:
             received_temperature = int(received_hex_data[10:18], 16)
             if received_temperature & 0x80000000:
                 received_temperature -= 0x100000000
-            received_is_fire = bool(int(received_hex_data[18:20], 16))
+            received_is_fire = bool(int(received_hex_data[-2:], 16))
 
-            print(f"Section: {received_section}")
-            print(f"Speed: {received_speed}")
-            print(f"Temperature: {received_temperature}")
-            print(f"Is Fire: {received_is_fire}")
+            # print(f"Section: {received_section}")
+            # print(f"Speed: {received_speed}")
+            # print(f"Temperature: {received_temperature}")
+            # print(f"Is Fire: {received_is_fire}")
 
             return {
                 "section": received_section,

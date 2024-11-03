@@ -29,6 +29,7 @@ def main():
         if ser.in_waiting > 0:
             data = ser.readline().decode()
             received_data = data.split(":")[-1].strip()
+            # received_data = data.split(':')[-1].replace('\r', '').replace('\n', '') # \r, \n
         else:
             print("No data received")
             continue

@@ -4,17 +4,20 @@ from testAPI import API
 import time
 
 def generate_random_data():
-    enum = random.randint(1,4)  # 1 byte
-    integer = random.randint(0, 80)  # 4 bytes
+    enum = random.randint(1,3)  # 1 byte
+    integer = random.randint(0, 30)  # 4 bytes
     signed_integer = random.randint(24, 28)  # 4 bytes, 음수 포함
-    boolean = random.randint(0, 1)  # 1 byte
+    if random.randint(0,10):  # 1 byte
+        boolean = 0
+    else:
+        boolean = 1
 
     # struct를 사용하여 바이트로 변환 후 문자열로 변환
     data = struct.pack('B I i B', enum, integer, signed_integer, boolean)
     return data.hex()
 
 def main():
-    interval = 5
+    interval = .1
     time.sleep(0.5)
     api = API("https://www.kgu-shiphub.com/api/sensor")
 
@@ -23,9 +26,9 @@ def main():
         payload = api.transform_data(received_data)
         
         # payload 값을 터미널에 출력
-        print(f"Sending payload: {payload}")
-        
-        api.send_data(payload)
+        if random.randint(0, 1):
+            print(f"Sending payload: {payload}")
+            # api.send_data(payload) 
 
         time.sleep(interval)
 
